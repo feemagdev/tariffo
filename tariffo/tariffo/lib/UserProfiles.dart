@@ -147,7 +147,8 @@ class _UserProfilesState extends State<UserProfiles> {
                     //profilepic
                     child: CircleAvatar(
                       radius: 10,
-                      backgroundImage: NetworkImage(widget.avatarUrl != null
+                      backgroundImage: NetworkImage(widget.avatarUrl != null &&
+                              widget.avatarUrl != 'default'
                           ? widget.avatarUrl
                           : "https://toppng.com/uploads/preview/roger-berry-avatar-placeholder-11562991561rbrfzlng6h.png"),
                     ),
@@ -158,7 +159,6 @@ class _UserProfilesState extends State<UserProfiles> {
                   top: MediaQuery.of(context).size.height / 4.5 + 16,
                   child: Row(
                     children: <Widget>[
-                      
                       Container(
                         height: 32,
                         width: 100,
@@ -233,8 +233,6 @@ class _UserProfilesState extends State<UserProfiles> {
                               }
                             }),
                       ),
-                      
-                    
                     ],
                   ),
                 ),
@@ -247,7 +245,6 @@ class _UserProfilesState extends State<UserProfiles> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          
                           Text(widget.userName,
                               style: TextStyle(
                                 color: Colors.black,
@@ -378,7 +375,10 @@ class _UserProfilesState extends State<UserProfiles> {
                       children: [
                         Row(
                           children: [
-                            Text("Reviews",style: TextStyle(fontWeight: FontWeight.bold),),
+                            Text(
+                              "Reviews",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
                             FlatButton(
                               onPressed: () {
                                 _addReviewBottomSheet(context);
@@ -432,20 +432,26 @@ class _UserProfilesState extends State<UserProfiles> {
                                                             .data["avatarUrl"]),
                                                   ),
                                                   SizedBox(width: 8),
-                                                  Text(snapshot
-                                                      .data
-                                                      .documents[index]
-                                                      .data["name"], style:TextStyle(fontWeight: FontWeight.bold))
+                                                  Text(
+                                                      snapshot
+                                                          .data
+                                                          .documents[index]
+                                                          .data["name"],
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold))
                                                 ],
                                               ),
                                               _buildRatingStars(snapshot
                                                   .data
                                                   .documents[index]
                                                   .data["rating"]),
-                                              Text(snapshot
-                                                  .data
-                                                  .documents[index]
-                                                  .data["text"],overflow: TextOverflow.ellipsis,textScaleFactor: 1.1)
+                                              Text(
+                                                  snapshot.data.documents[index]
+                                                      .data["text"],
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  textScaleFactor: 1.1)
                                             ],
                                           ),
                                         );
