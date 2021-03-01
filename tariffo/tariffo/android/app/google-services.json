@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "422207793483",
+    "firebase_url": "https://tariffo-6ea24.firebaseio.com",
+    "project_id": "tariffo-6ea24",
+    "storage_bucket": "tariffo-6ea24.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:422207793483:android:c695bd27dd9c6f384220ce",
+        "android_client_info": {
+          "package_name": "com.svapps.tariffo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "422207793483-d2fp264ojihq7rhgk6tvcubhngg9nao5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.svapps.tariffo",
+            "certificate_hash": "e009a989c7ab722503a4f618a0f282667f059869"
+          }
+        },
+        {
+          "client_id": "422207793483-ai8nr52pc0q7o1uqlh5k2uhb0rq5faqv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCz08Ho-wYZViOrYLsPRo-Cxva7cRglIXA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "422207793483-ai8nr52pc0q7o1uqlh5k2uhb0rq5faqv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "422207793483-86uh6qpf7mg6iukavgld1ggq0vabbo8m.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.svappps.tariffo"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
