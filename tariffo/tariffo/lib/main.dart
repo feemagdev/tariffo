@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:tariffo/auth.dart';
 import 'package:tariffo/provider_widget.dart';
 import 'package:tariffo/push_notification_service.dart';
+import 'package:tariffo/screens/user_detail_checking.dart';
 import 'dart:async';
 import 'LoginScreen.dart';
 import 'LoginPage.dart';
@@ -44,7 +45,10 @@ class _MyAppState extends State<MyApp> {
             const Duration(seconds: 1),
             () => Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Homepage()),
+                  MaterialPageRoute(
+                      builder: (context) => BusinessUserCheck(
+                            uid: value.uid,
+                          )),
                 ));
       }
     });

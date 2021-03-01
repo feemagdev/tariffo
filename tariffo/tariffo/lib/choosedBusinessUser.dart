@@ -326,55 +326,57 @@ class _BusinessPageState extends State<BusinessPage> {
                   SizedBox(height: 10),
                   GestureDetector(
                     onTap: () {
-                      Map<String, dynamic> data = {
-                        'address': controller.text,
-                        'country': country
-                      };
-                      DocumentReference reference = Firestore.instance
-                          .collection('Users')
-                          .document("$userId");
+                      if (_formKey.currentState.validate()) {
+                        Map<String, dynamic> data = {
+                          'address': controller.text,
+                          'country': country
+                        };
+                        DocumentReference reference = Firestore.instance
+                            .collection('Users')
+                            .document("$userId");
 
-                      Firestore.instance.runTransaction((transaction) async {
-                        transaction.update(reference, data);
-                      });
+                        Firestore.instance.runTransaction((transaction) async {
+                          transaction.update(reference, data);
+                        });
 
-                      Firestore.instance
-                          .collection('Users/$userId/BusinessAccount')
-                          .document('detail')
-                          .setData({
-                        'category': elements1[selectedIndex1],
-                      }, merge: true).catchError((e) {
-                        print(e);
-                      });
-                      Firestore.instance
-                          .collection('${elements1[selectedIndex1]}')
-                          .document('$userId')
-                          .setData({
-                        'id': '$userId',
-                        'categoryName': elements1[selectedIndex1],
-                        'openTime': elements2[selectedIndex2],
-                        'closeTime': elements2[selectedIndex3],
-                      }, merge: true).catchError((e) {
-                        print(e);
-                      });
+                        Firestore.instance
+                            .collection('Users/$userId/BusinessAccount')
+                            .document('detail')
+                            .setData({
+                          'category': elements1[selectedIndex1],
+                        }, merge: true).catchError((e) {
+                          print(e);
+                        });
+                        Firestore.instance
+                            .collection('${elements1[selectedIndex1]}')
+                            .document('$userId')
+                            .setData({
+                          'id': '$userId',
+                          'categoryName': elements1[selectedIndex1],
+                          'openTime': elements2[selectedIndex2],
+                          'closeTime': elements2[selectedIndex3],
+                        }, merge: true).catchError((e) {
+                          print(e);
+                        });
 
-                      Firestore.instance
-                          .collection('SuperUser')
-                          .document('$userId')
-                          .setData({
-                        'user': '$userId',
-                        'expired_on': new DateTime.now()
-                            .add(new Duration(days: 7))
-                            .millisecondsSinceEpoch,
-                        'plan': 'free',
-                        'notified': false,
-                        'expired': false,
-                      });
+                        Firestore.instance
+                            .collection('SuperUser')
+                            .document('$userId')
+                            .setData({
+                          'user': '$userId',
+                          'expired_on': new DateTime.now()
+                              .add(new Duration(days: 7))
+                              .millisecondsSinceEpoch,
+                          'plan': 'free',
+                          'notified': false,
+                          'expired': false,
+                        });
 
-                      print(new DateTime.now().add(new Duration(days: 7)));
+                        print(new DateTime.now().add(new Duration(days: 7)));
 
-                      Navigator.push(context,
-                          new MaterialPageRoute(builder: (_) => Homepage()));
+                        Navigator.push(context,
+                            new MaterialPageRoute(builder: (_) => Homepage()));
+                      }
                     },
                     child: Container(
                       width: MediaQuery.of(context).size.width * 0.8,

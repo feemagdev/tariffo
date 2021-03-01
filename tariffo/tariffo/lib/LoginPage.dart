@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:tariffo/choosedBusinessUser.dart';
 import 'SignUp.dart';
 import 'brazierContainer.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -150,10 +152,28 @@ class _LoginPageState extends State<LoginPage> {
                                       loading = false;
                                       errorAlert();
                                     } else {
-                                      Navigator.push(context,
-                                          MaterialPageRoute(builder: (context) {
-                                        return Homepage();
-                                      }));
+                                      DocumentSnapshot userData =
+                                          await Firestore.instance
+                                              .collection('Users')
+                                              .document(result)
+                                              .get();
+
+                                      if ((userData.data['country'] == null ||
+                                              userData.data['country'] == '') &&
+                                          userData.data['userRole'] ==
+                                              'Business') {
+                                        Navigator.push(context,
+                                            MaterialPageRoute(
+                                                builder: (context) {
+                                          return BusinessPage();
+                                        }));
+                                      } else {
+                                        Navigator.push(context,
+                                            MaterialPageRoute(
+                                                builder: (context) {
+                                          return Homepage();
+                                        }));
+                                      }
                                     }
                                   }
                                 },
