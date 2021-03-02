@@ -200,7 +200,8 @@ class _CustomerPostsState extends State<CustomerPosts> {
                       if (!snapshot2.hasData) {
                         return LinearProgressIndicator();
                       } else {
-                        if (snapshot2.data.data['country'] == country) {
+                        if (snapshot2.data.data['country'] == country ||
+                            snapshot2.data.data['userRole'] == 'Customer') {
                           return _postUI(postSnapshot);
                         } else {
                           return Container();
